@@ -171,6 +171,10 @@ angular.module('pokemon',[
 		
 		$scope.inventory = [];
 		
+		$scope.transfers = [];
+		$scope.notes = [];
+		$scope.evolutions = [];
+		
 		$scope.addPokemonClick = function () {
 			if($scope.selectedPokemon && $scope.selectedPokemon > 0
 			&& $scope.numSelectedCandies && $scope.numSelectedCandies > 0
@@ -204,9 +208,9 @@ angular.module('pokemon',[
 		}
 		
 		$scope.CreatePlan = function () {
-			$("#evoPlan-transfer").html("");
-			$("#evoPlan-evolve").html("");
-			$("#evoPlan-xp").html("");
+			$scope.transfers.length = 0;
+			$scope.evolutions.length = 0;
+			$scope.notes.length = 0;
 			
 			var totalEvos = 0;
 			
@@ -240,13 +244,14 @@ angular.module('pokemon',[
 						break;
 					}
 				}
-				$("#evoPlan-transfer").append("Transfer " + numTransfer + " " + cur.pokemon.name + "</br>");
-				$("#evoPlan-evolve").append("Evolve and transfer " + numEvos + " " + cur.pokemon.name + "</br>");
+				
+				$scope.transfers.push("Transfer " + numTransfer + " " + cur.pokemon.name);
+				$scope.evolutions.push("Evolve and transfer " + numEvos + " " + cur.pokemon.name);
 				totalEvos += numEvos;
 			}
 			
-			$("#evoPlan-xp").append("To gain " + (totalEvos * 1000) + " exp </br>");
-			$("#evoPlan-xp").append("This will take approximatly " + (totalEvos*0.5) + " minutes");
+			$scope.notes.push("To gain " + (totalEvos * 1000) + " exp");
+			$scope.notes.push("This will take approximatly " + (totalEvos*0.5) + " minutes");
 		}
 		
 	}
