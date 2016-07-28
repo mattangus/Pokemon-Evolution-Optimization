@@ -250,7 +250,7 @@ angular.module('pokemon',[
 				totalEvos += numEvos;
 			}
 			
-			$scope.notes.push("To gain " + (totalEvos * 1000) + " exp");
+			$scope.notes.push("To gain " + (totalEvos * 1000) + " exp (" + (totalEvos * 500) + " exp without a lucky egg)");
 			$scope.notes.push("This will take approximatly " + (totalEvos*0.5) + " minutes");
 		}
 		
