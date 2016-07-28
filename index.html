@@ -43,7 +43,7 @@
 				<div class="col-md-4">
 					<div class="input-group">
 						<span class="input-group-addon">Pokemon</span>
-						<select class="form-control" ng-model="selectedPokemon" ng-options="mon.id as mon.name for mon in pokemonList | filter:{candies: ''}">
+						<select class="form-control" ng-model="selectedPokemon" ng-options="mon.id as mon.name for mon in pokemonList | filter:{candies: ''} | orderBy:'name'">
 						</select>
 					</div>
 				</div>
