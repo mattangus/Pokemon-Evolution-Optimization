@@ -78,6 +78,7 @@
 							<th>Pokemon</th>
 							<th>Number of Pokemon</th>
 							<th>Number of Candies</th>
+							<th>Remove</th>
 						</tr>
 					</thead>
 					<tbody >
@@ -86,6 +87,10 @@
 							<td>{{item.pokemon.name}}</td>
 							<td>{{item.numpokemon}}</td>
 							<td>{{item.numcandies}}</td>
+							<td>
+								<button title="" type="button" class="btn btn-danger btn-xs" ng-click="removePokemon(item)" />
+								<span class="glyphicon glyphicon-trash"></span>
+							</td>
 						</tr>
 					</tbody>
 				</table>
