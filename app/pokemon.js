@@ -203,6 +203,11 @@ angular.module('pokemon',[
 			}
 		}
 		
+		$scope.removePokemon = function(item) {
+			var index = $scope.inventory.indexOf(item);
+			$scope.inventory.splice(index,1);
+		}
+		
 		$scope.getPokemon = function (id) {
 			return $scope.pokemonList[id-1];
 		}
@@ -211,6 +216,9 @@ angular.module('pokemon',[
 			$scope.transfers.length = 0;
 			$scope.evolutions.length = 0;
 			$scope.notes.length = 0;
+			
+			if($scope.inventory.length <= 0)
+				return;
 			
 			var totalEvos = 0;
 			
