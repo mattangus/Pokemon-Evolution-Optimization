@@ -1,0 +1,138 @@
+<!doctype html>
+
+<html lang="en" ng-app="pokemon">
+<head>
+	<meta charset="utf-8">
+	<title>Pokemon Go Evolution Optimization</title>
+	<meta name="description" content="The HTML5 Herald">
+	<meta name="author" content="SitePoint">
+	<link rel="stylesheet" href="css/styles.css?v=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="css/normalize.min.css">
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="app/pokemon.js"></script>
+	<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body ng-controller="MainCtrl">
+	<nav class="navbar navbar-default">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Home</a>
+			</div>
+		</div>
+	</nav>
+	
+	<div class="container">
+	
+		<div class="page-header">
+			<h1>Pokemon Go Evolution Optimization</h1>
+		</div>
+		
+		
+		<div class="panel panel-default">
+			<div class="panel-heading">Add Pokemon</div>
+			<div class="panel-body">
+				<div class="col-md-4">
+					<div class="input-group">
+						<span class="input-group-addon">Pokemon</span>
+						<select class="form-control" ng-model="selectedPokemon" ng-options="mon.id as mon.name for mon in pokemonList | filter:{candies: ''} | orderBy:'name'">
+						</select>
+					</div>
+				</div>
+				
+				<div class="col-md-4">
+					<div class="input-group">
+						<span class="input-group-addon">Number of Pokemon</span>
+						<input type="number" value="0" min="0" step="1" class="form-control" id="numPokemon" ng-model="numSelectedPokemon"></input>
+					</div>
+				</div>
+				
+				<div class="col-md-4">
+					<div class="input-group">
+						<span class="input-group-addon">Number of Candies</span>
+						<input type="number" value="0" min="0" step="1" class="form-control" id="numCandies" ng-model="numSelectedCandies"></input>
+					</div>
+				</div>
+		
+				<div class="col-md-1">
+					<input type="button" value="Add!" class="form-control" ng-click="addPokemonClick()"></input>
+				</div>
+			</div>
+		</div>
+		
+		<div class="panel panel-default">
+			<div class="panel-heading">Pokemon Selection</div>
+			<div class="panel-body">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Pokemon</th>
+							<th>Number of Pokemon</th>
+							<th>Number of Candies</th>
+							<th>Remove</th>
+						</tr>
+					</thead>
+					<tbody >
+						<tr ng-repeat="item in inventory">
+							<td>{{item.pokemon.id}}</td>
+							<td>{{item.pokemon.name}}</td>
+							<td>{{item.numpokemon}}</td>
+							<td>{{item.numcandies}}</td>
+							<td>
+								<button title="" type="button" class="btn btn-danger btn-xs" ng-click="removePokemon(item)" />
+								<span class="glyphicon glyphicon-trash"></span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<div class="col-md-2">
+					<input type="button" value="Create Plan" class="form-control" ng-click="CreatePlan()"></input>
+				</div>
+			</div>
+		</div>
+		
+		<div class="panel panel-default">
+			<div class="panel-heading">Evolution Plan</div>
+			<div class="panel-body">
+				<div id="evoPlan-transfer">
+					<ul>
+						<li ng-repeat="transfer in transfers">{{transfer}}</li>
+					</ul>
+				</div>
+				<div id="evoPlan-evolve">
+					<ul>
+						<li ng-repeat="evo in evolutions">{{evo}}</li>
+					</ul>
+				</div>
+				<div id="evoPlan-notes">
+					<ul>
+						<li ng-repeat="note in notes">{{note}}</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>		
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-81489730-1', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+</body>
+</html>
