@@ -236,7 +236,7 @@ angular.module('pokemon',[
 				{
 					while(numCandies >= cost && numpokemon > 0)
 					{
-						numCandies -= cost - 1;
+						numCandies -= cost - 2;
 						numpokemon--;
 						numEvos++;
 					}
